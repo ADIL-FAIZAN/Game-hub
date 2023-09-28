@@ -2,7 +2,7 @@
 import CardContainer from './CardContainer';
 import GameCard from './GameCard';
 import GameCardSkeleton from './GameCardSkeleton';
-import useGame from './useGame';
+import useGame from '../hooks/useGame';
 import {SimpleGrid} from '@chakra-ui/react'
 const Skeletons=[1,2,3,4,5,6]
 

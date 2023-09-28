@@ -25,11 +25,11 @@ export interface Game{
 
 const useGame = () => {
 
-const controller=new AbortController();
+
 const [game,setGame]=useState<Game[]>([]);
 const[error,setError]=useState('');
 const [isLoading,setLoading]=useState(false);
-console.log(game)
+
     useEffect(() => {
         setLoading(true);
         ApiClient.get<FetchGamesResponse>('/games')
@@ -45,7 +45,7 @@ console.log(game)
         
     },[]);
 
-  return {game,error,isLoading};
+  return {game,error,isLoading}
 }
 
 export default useGame;
