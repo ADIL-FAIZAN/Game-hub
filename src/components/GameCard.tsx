@@ -1,12 +1,11 @@
 import {Card,Image,Heading,CardBody,Text} from '@chakra-ui/react'
-import {Game} from './useGame';
+import {Game} from '../hooks/useGame';
 import PlateFormIcons from './plateformIcons';
 import Metacritic from './metacritic';
 
 interface props{
 
     data:Game,
-
 }
 
 const GameCard = ({data}:props) => {

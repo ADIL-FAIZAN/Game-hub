@@ -10,6 +10,7 @@ import ApiClient from '../Services/Api-Client';
     interface Genres{
         id:number;
         name:string;
+        image_background:string;
     }
 
 const useGenres = () => {
@@ -18,7 +19,7 @@ const useGenres = () => {
     const [genres,setGenres]=useState<Genres[]>([]);
     const[error,setError]=useState('');
     const [isLoading,setLoading]=useState(false);
-    console.log(genres)
+    
 
     useEffect(() => {
         setLoading(true);

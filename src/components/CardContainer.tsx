@@ -10,7 +10,7 @@ children:ReactNode;
 const CardContainer = ({children}:props) => {
   return (
     <div>
-      <Box width='300px' borderRadius="8px" overflow="hidden" padding="10px">{children}</Box>
+      <Box borderRadius="8px" overflow="hidden" padding="10px">{children}</Box>
     </div>
   )
 }
