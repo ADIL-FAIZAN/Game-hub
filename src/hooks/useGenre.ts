@@ -7,7 +7,7 @@ import ApiClient from '../Services/Api-Client';
     results:Genres[]
     }
 
-    interface Genres{
+   export interface Genres{
         id:number;
         name:string;
         image_background:string;

@@ -26,4 +26,4 @@ const GameCard = ({data}:props) => {
   )
 }
 
-export default GameCard
+export default GameCard;

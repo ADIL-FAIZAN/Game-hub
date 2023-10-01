@@ -1,0 +1,1 @@
+ApiClient.get<FetchGamesResponse>('/games',{params:{genres:SelectedGenre?.id},...requestConfig,[SelectedGenre?.id]})
