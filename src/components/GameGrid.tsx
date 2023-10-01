@@ -20,6 +20,7 @@ const {game,error,isLoading}=useGame(SelectedGenre);
 
 return(
 <div>
+  
     {error&&<p>{error}</p>}
 <SimpleGrid columns={{sm:1,md:2,lg:3,xl:5}} spacing={1}>
 

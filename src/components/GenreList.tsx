@@ -3,10 +3,11 @@ import {Image, HStack, List,ListItem,Text, Spinner,SkeletonCircle,Box,Button} fr
 
 interface props{
   onSelectGenre:(genre:genre)=>void
+  SelectedGenre:Genre|null
 }
 
 
-const Genre = ({onSelectGenre}:props) => {
+const Genre = ({onSelectGenre,SelectedGenre}:props) => {
    const{genres,isLoading,error}=useGenres();  
    const Skeletons=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
 
@@ -21,7 +22,7 @@ const Genre = ({onSelectGenre}:props) => {
       <ListItem key={each.id}>
         <HStack>
        <Image  src={each.image_background} my="2" boxSize="32px" borderRadius={8}/>
-       <Button onClick={()=>onSelectGenre(each)} variant="link">{each.name}</Button>
+       <Button fontWeight={each.id===SelectedGenre?.id ?'bold':'normal'}onClick={()=>onSelectGenre(each)} variant="link">{each.name}</Button>
         </HStack>
         </ListItem>
       )}

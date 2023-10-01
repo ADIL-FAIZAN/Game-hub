@@ -22,12 +22,11 @@ const useGame =(SelectedGenre:Genres|null,requestConfig?:AxiosRequestConfig,deps
 const [game,setGame]=useState<Game[]>([]);
 const[error,setError]=useState('');
 const [isLoading,setLoading]=useState(false);
+
 const dependencyArray = deps ? [...deps, SelectedGenre?.id]:[SelectedGenre?.id];
-
 useEffect(() => {
-    setLoading(true);
-
-        ApiClient.get<FetchGamesResponse>('/games',
+       setLoading(true);
+       ApiClient.get<FetchGamesResponse>('/games',
         { params:{
             genres:SelectedGenre?.id,
             ...requestConfig
