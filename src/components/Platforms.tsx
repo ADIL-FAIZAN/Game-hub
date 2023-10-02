@@ -3,19 +3,19 @@ import {
     MenuButton,
     MenuList,
     MenuItem,
-    MenuItemOption,
-    MenuGroup,
-    MenuOptionGroup,
-    MenuDivider,
     Button
   } from '@chakra-ui/react';
-
+  import { Platform } from '../hooks/useGame'; 
   import {BsChevronDown } from 'react-icons/bs'
 import usePlatform from '../hooks/usePlatform';
 
 
+interface Props{
 
-const Platform = () => {
+    setMenu:(platform:Platform)=>void;
+    name: Platform|null;
+}
+const Platforms = ({setMenu, name}:Props) => {
 const {Platform,error}=usePlatform()
 
 
@@ -25,16 +25,15 @@ const {Platform,error}=usePlatform()
          {error&&<p>Your Platform Is Not Correct</p>}
       <Menu>
   <MenuButton as={Button} rightIcon={<BsChevronDown />}>
-    Platforms
+    {name?.name||'Platforms'}
   </MenuButton>
   <MenuList >
     {Platform.map(e=>
-    <MenuItem key={e.id}>{e.name}</MenuItem>
+    <MenuItem key={e.id} onClick={()=>setMenu(e)}>{e.name}</MenuItem>
     )}
   </MenuList>
 </Menu>
     </div>
   )
 }
-
-export default Platform
+export default Platforms;

@@ -27,5 +27,7 @@ const usePlatform = () => {
         },[])
 
         return {Platform,error}
+
 }
+
 export default usePlatform;

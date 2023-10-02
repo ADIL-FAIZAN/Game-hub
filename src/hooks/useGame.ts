@@ -2,6 +2,7 @@ import {useState,useEffect} from 'react';
 import ApiClient from '../Services/Api-Client';
 import { AxiosRequestConfig } from 'axios';
 import { Genres } from './useGenre';
+import { GameQuery } from '../App';
 export interface Platform{
 id:number;
 name:string;
@@ -10,7 +11,7 @@ export interface Game{
     id:number;
     name:string;
     background_image:string;
-    parent_platforms:{platform:platform}[];
+    parent_platforms:{platform:Platform}[];
     metacritic:number;
    }
     interface FetchGamesResponse{
@@ -18,17 +19,18 @@ export interface Game{
     results:Game[]
     }
     
-const useGame =(SelectedGenre:Genres|null,requestConfig?:AxiosRequestConfig,deps?:any[]) => {
+const useGame =(gameQuery:GameQuery,requestConfig?:AxiosRequestConfig,deps?:any[]) => {
 const [game,setGame]=useState<Game[]>([]);
 const[error,setError]=useState('');
 const [isLoading,setLoading]=useState(false);
 
-const dependencyArray = deps ? [...deps, SelectedGenre?.id]:[SelectedGenre?.id];
+const dependencyArray = deps ? [...deps, gameQuery] : [gameQuery];
 useEffect(() => {
        setLoading(true);
        ApiClient.get<FetchGamesResponse>('/games',
         { params:{
-            genres:SelectedGenre?.id,
+            genres:gameQuery.genre?.id,
+        platforms:gameQuery.platform?.id,
             ...requestConfig
             }})
         .then(res=>{
