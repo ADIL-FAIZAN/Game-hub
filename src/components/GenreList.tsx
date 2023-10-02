@@ -1,5 +1,5 @@
 import useGenres from "../hooks/useGenre";
-import {Image, HStack, List,ListItem,Text, Spinner,SkeletonCircle,Box,Button} from "@chakra-ui/react";
+import {Image, HStack, List,ListItem,Text, Spinner,SkeletonCircle,Box,Button, Heading} from "@chakra-ui/react";
 
 interface props{
   onSelectGenre:(genre:genre)=>void
@@ -17,12 +17,12 @@ const Genre = ({onSelectGenre,SelectedGenre}:props) => {
     <List>
     {error&& 'null'}
       {isLoading&&Skeletons.map(e=><SkeletonCircle marginTop="20px" key={e} size='10' />)} 
-      
+      <Heading fontSize='2xl' marginBottom={3}>Genres</Heading>
       {genres.map(each=>
       <ListItem key={each.id}>
         <HStack>
-       <Image  src={each.image_background} my="2" boxSize="32px" borderRadius={8}/>
-       <Button fontWeight={each.id===SelectedGenre?.id ?'bold':'normal'}onClick={()=>onSelectGenre(each)} variant="link">{each.name}</Button>
+       <Image  src={each.image_background} objectFit='cover'  my="2" boxSize="32px" borderRadius={8}/>
+       <Button whiteSpace="normal" textAlign='left'   fontWeight={each.id===SelectedGenre?.id ?'bold':'normal'}onClick={()=>onSelectGenre(each)} variant="link">{each.name}</Button>
         </HStack>
         </ListItem>
       )}
