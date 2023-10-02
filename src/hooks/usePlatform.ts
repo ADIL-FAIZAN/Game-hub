@@ -15,7 +15,7 @@ const usePlatform = () => {
 
     useEffect(() => {
          
-             ApiClient.get('/platforms/lists/parents')
+             ApiClient.get('platforms/lists/parents')
             .then(res=>{
             setPlatform(res.data.results)
             

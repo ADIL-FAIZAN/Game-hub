@@ -1,7 +1,6 @@
 import {useState,useEffect} from 'react';
 import ApiClient from '../Services/Api-Client';
 import { AxiosRequestConfig } from 'axios';
-import { Genres } from './useGenre';
 import { GameQuery } from '../App';
 export interface Platform{
 id:number;
@@ -25,12 +24,15 @@ const[error,setError]=useState('');
 const [isLoading,setLoading]=useState(false);
 
 const dependencyArray = deps ? [...deps, gameQuery] : [gameQuery];
+
 useEffect(() => {
        setLoading(true);
        ApiClient.get<FetchGamesResponse>('/games',
         { params:{
             genres:gameQuery.genre?.id,
-        platforms:gameQuery.platform?.id,
+            platforms:gameQuery.platform?.id,
+            ordering:gameQuery.sortOrder,
+            search:gameQuery.SearchText,
             ...requestConfig
             }})
         .then(res=>{
